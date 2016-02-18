@@ -2,3 +2,28 @@ Gulp Overview
   Gulp is a build tool that helps you automate your development workflow.
   Gulp requires you to have Node.js and Node Package Manager (NPM) installed on your system.
   
+  To configure Gulp, you’ll first have to require gulp within your gulpfile.js:
+  
+  // Requiring Gulp
+  var gulp = require('gulp');
+  This require statement tells Node.js to look under the node_modules folder, 
+  find a package named gulp and pass it to the gulp variable.
+  Same gulp variable can use to write different Gulp tasks. 
+  Here’s the basic syntax of a gulp task.
+
+    // Basic Gulp task syntax
+    gulp.task('hello', function () {
+    console.log('Hello Zell!');
+    })
+    
+    
+    Creating a Real Task
+
+Here’s what a real task may look like:
+
+  gulp.task('task-name', function () {
+    gulp.src('src') // Get source files with gulp.src
+      .pipe(somePlugin()) // Sends it through a gulp plugin
+      .pipe(gulp.dest('dest')) // Outputs the file in the destination folder
+  })
+  
