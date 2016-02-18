@@ -1,0 +1,4 @@
+Gulp Overview
+  Gulp is a build tool that helps you automate your development workflow.
+  Gulp requires you to have Node.js and Node Package Manager (NPM) installed on your system.
+  
