@@ -1,0 +1,13 @@
+Clean Code
+
+
+Separation of Concerns(SoC)
+ - Easier to Maintain
+ - Easier to Extend
+ - Reuse More Code
+ - Easier to Test
+ - Easier to Isolate Bugs
+The Rule of One
+ - A Component has one Role
+ - One Component per file
+ - Singular perpose
