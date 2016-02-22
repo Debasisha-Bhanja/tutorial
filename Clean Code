@@ -11,6 +11,13 @@ The Rule of One
  - A Component has one Role
  - One Component per file
  - Singular perpose
+ 
+LIFT Principle
+   L -> Locating code should be easy
+   I -> Identify code should be easy enough and should not take much time
+        (1 file 1 rule)
+   F -> Flat structure
+   T -> Try to stay DRY(Do Not Repeat Yourself)
 -------------------------------------
 
  How :
@@ -20,4 +27,15 @@ The Rule of One
 
 Adv
   -  Decreases risk, cost, time to deliver
-  -  Increaases testability, code reuse, maintainability
+  -  Increases testability, code reuse, maintainability
+  
+  ---------------------------------------
+How to Organizing the code
+  - By Type (For small application this approach more suitable)
+  - By Feature
+  - Combination of Feature and Type (Folder for feature and then inside that each     component can organize based on it's type)
+ Imp:
+   Once you pick one approcah for Organizing your application stick with it.
+
+
+   
