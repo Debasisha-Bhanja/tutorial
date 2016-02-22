@@ -11,3 +11,13 @@ The Rule of One
  - A Component has one Role
  - One Component per file
  - Singular perpose
+-------------------------------------
+
+ How :
+   -  1 Component , 1 Rule , 1 File
+   -  Use Dependencies
+   -  Modularize code
+
+Adv
+  -  Decreases risk, cost, time to deliver
+  -  Increaases testability, code reuse, maintainability
