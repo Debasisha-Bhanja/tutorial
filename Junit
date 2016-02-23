@@ -1,0 +1,24 @@
+Test Suite -> Using Test Suite class we can run multiple Test Class together.
+              Test Suite can run using Suite Class Runner
+
+Test Suite Class ->
+                    Add following class level annotation 
+                    @RunWith(Suite.class)
+                    @Suite.SuiteClasses({Class1.clas,Class2.class})
+To Run Test Suite
+               -> Run as Junit Test Class
+
+Categories -> Similar to Test Suites in Junit
+       Category runner is a specialized kind of Suite Runner 
+ In Junit we can add Category annotation to any test class or Test method and include corresponding category
+ 
+ A category class usually a marker interface , but it can also be a class
+
+Ex of assigning a category to a Test class
+
+   @Test
+   @Category(CategoryClass.class)
+   public void checkforZero()
+   {
+    assertEquals(0,service.val)
+   }
