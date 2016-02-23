@@ -14,11 +14,40 @@ Categories -> Similar to Test Suites in Junit
  
  A category class usually a marker interface , but it can also be a class
 
-Ex of assigning a category to a Test class
+ Ex of assigning a category to a Test method
+       @Test
+       @Category(CategoryClass.class)
+       public void checkforZero()
+       {
+         assertEquals(0,service.val)
+       }
+    
+ Ex of applying categories to a class
+       @Category(CategoryClass.class)
+       public class TestClass {
+       
+  How to create Test Suite using Category
+       Add following class level annotaion to Test Suite class
+         @Runwith(Categories.class)
+         @IncludeCategory(CategoryClass.class)
+         @Suite.SuiteClasses({Class1.clas,Class2.class})
+         public class TestSuiteCls{
 
-   @Test
-   @Category(CategoryClass.class)
-   public void checkforZero()
-   {
-    assertEquals(0,service.val)
-   }
+    -> Output wise here the differnce is it's only run those tests thats belongs to this category
+
+     Like IncludeCategory we can specify exclude Category in Test Suite by using following annotation
+
+     @ExcludeCategory(ExCategoryClass.class)
+Parameterized Tests
+ 1: Create new Class
+ 2: Add following class level annoation
+      @RunWith(Parameterized.class)
+ 3: create a static method which will returns all parameters
+ 4: add following annotaion to the same method
+     @Parameters
+ 5: Create a constructor with 2 parameters  one for input and next one is expected value
+ 6: Create test method
+ 
+ When we execute Parameterized Test class then test method will excute for each defined parameters 
+
+
