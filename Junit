@@ -1,3 +1,4 @@
+-----------------------------------------------------------------------------------------------------------------------
 Test Suite -> Using Test Suite class we can run multiple Test Class together.
               Test Suite can run using Suite Class Runner
 
@@ -7,7 +8,7 @@ Test Suite Class ->
                     @Suite.SuiteClasses({Class1.clas,Class2.class})
 To Run Test Suite
                -> Run as Junit Test Class
-
+-----------------------------------------------------------------------------------------------------------------------
 Categories -> Similar to Test Suites in Junit
        Category runner is a specialized kind of Suite Runner 
  In Junit we can add Category annotation to any test class or Test method and include corresponding category
@@ -38,6 +39,7 @@ Categories -> Similar to Test Suites in Junit
      Like IncludeCategory we can specify exclude Category in Test Suite by using following annotation
 
      @ExcludeCategory(ExCategoryClass.class)
+-------------------------------------------------------------------------------------------------------------------
 Parameterized Tests
  1: Create new Class
  2: Add following class level annoation
@@ -49,5 +51,27 @@ Parameterized Tests
  6: Create test method
  
  When we execute Parameterized Test class then test method will excute for each defined parameters 
+-----------------------------------------------------------------------------------------------------------------------
+Expected Exception 
+ Used for indepth Exception testing
 
+ Sample Expected Exception Example
+  1: Create a Expected Exception rule inside the Test class by using following annotation and instantiate a 
+     public ExpectedException class
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+  2: Inside the test method we can set up the expectation for the same class
+     
+     Ex: 
+      @Test
+      public void isInvalidValue() throw InvalidValueException
+      {
+        thrown.expect(InvalidValueException.class);
+        thrown.expectMessage("Invalid Value");
+        service.setValue(-5);
+      }
+
+     If both expectation (Exception and message) satisfied then only above test method will pass .
+-----------------------------------------------------------------------------------------------------------------------
