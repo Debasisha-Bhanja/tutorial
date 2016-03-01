@@ -75,3 +75,14 @@ Expected Exception
 
      If both expectation (Exception and message) satisfied then only above test method will pass .
 -----------------------------------------------------------------------------------------------------------------------
+Theories- Theory basically a test that holds true  under all conditions that meet a set of assumptions.
+@Theory -> 
+
+Class with annotation @RumWith(Theories.class)
+
+can use @Theory in place of @Rule
+-----------------------------------------------------------------------------------------------------------------------
+ Running JUnit from Java Class
+   JUnitCore junit = new JUnitCore();
+   junit.addListner(new TextListener(System.out)); //To redirect output to console
+   junit.run(TestClass.class);
