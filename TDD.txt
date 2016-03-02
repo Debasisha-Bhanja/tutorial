@@ -1,0 +1,16 @@
+Test Driven Development (TDD)
+ Tests one step ahead of your code
+Benefit
+  - Brings balance between functional coding and automated test coding.
+  - Gain reliability in your testing effort
+  - Up-front design with testing in mind
+  - More even gauge of progress between testing and coding
+  
+Common Framework supporting TDD
+
+  - Mockito : This framework helps support mocking and stubing of dependent interface and objects helping you implement mock patterns into your test code.
+
+  - DBUnit : This framework covers SQL based data fixture setup and teardown and validation of data manipulations occurring as a result of the method-under-test being executed.
+ 
+ - PowerMockito : This framework focusing on extended mocking capabilities not directly supported in Mockito
+
