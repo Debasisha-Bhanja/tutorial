@@ -76,3 +76,72 @@ Task Dependency
 
 * In this case if we execute task 6 then first gradle execute  Task3 and then Task6
 -------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+Adding properties to gradle
+ Approach 1: Define local veriable and used inside action
+     -> def codeVersion = "1.0"
+      inside action we can use variable by using $<veriable Name>
+         doLast{ println $codeVersion }
+
+ Approach 2: in Mutiproject build we can define extened property
+             -> project.ext.projectVer = "3.0"
+             we can use this variable in any other project
+
+ --------------------------------------------------------------------------------
+Task Dependecy
+
+ task task1 << println "Task 1"
+ task task2 << println "Task 2"
+ task task3 << println "Task 3"      
+ task task4 << println "Task 4"
+ task task5 << println "Task 5"
+ task task6 << println "Task 6"  
+ task1.dependsOn  task2
+ task1.dependsOn task3, task4
+  
+ task3.dependsOn task5
+ task4.dependsOn task5
+
+-> task -q task1
+
+* No depepency order will maintained by gradle
+
+---------------------------------------------------------------------------------------
+Other Gradle Dependecies 
+ * mustRunAfter
+   - one task must execute after the other task
+ 
+ * shouldRunAfter
+   - Similar to mustRunAfter only difference is this will ignores circular dependecies
+   -> task2.mustRunAfter task3, task4
+
+ * finalizedBy 
+    
+
+---------------------------------------------------------------------------------------
+Ad-hoc tasks
+
+  Types Tasks (reusable tasks)
+
+  Approach 1
+  -> task copyCSS (type:Copy)
+     {
+      excludes 'temp.css', 'del.css'
+      from  'css_src'
+      into  'css_dest'
+     }
+ 
+ Approach 2
+  -> 
+    def cssContentSpec = copySpec{
+      excludes 'temp.css', 'del.css'
+      from  'css_src'
+    } 
+
+    task copyCSS (type:Copy)
+     {
+      with cssContentSpec 
+      into  'css_dest'
+     }
+---------------------------------------------------------------------------------------
+     
