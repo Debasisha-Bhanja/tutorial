@@ -1,0 +1,78 @@
+Gradle -Task Domain Specific language (DSL)
+-------------------------------------------------------------------------------------------
+1: Create gradle task
+task hello{
+ 
+doLast {
+  println "Hello World" 
+ }
+
+}
+
+2: To run task
+ -> gradle hello
+
+-------------------------------------------------------------------------------------------
+Add java plugin
+
+   apply plugin: 'java'
+
+-> gradle tasks
+-> gradle build
+-------------------------------------------------------------------------------------------
+
+task wrapper
+
+ -> apply plgin: 'java'
+ 
+ task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+  }
+
+-------------------------------------------------------------------------------------------
+
+Task: It's codee that Gradle executes first
+ - Has a life Cycle
+ - Has properties
+ - Has actions (first Action/Last Action)
+ - Has Dependencies
+-------------------------------------------------------------------------------------------
+
+Project is the top level object 
+
+To create Tasks
+
+ ->  project.task("Task 1")
+      task("Task 2")
+      task "Task 3"
+      task Task4
+      task.description = "Task 4 desc...."
+      task4.dolast { println "Task 4 finished"}
+      task3 << {"Task 3 completed"}
+      task4.dependsOn Task3
+
+* << represents same as doLast
+
+-------------------------------------------------------------------------------------------
+
+To execute Task
+  -> gradle task4
+
+-------------------------------------------------------------------------------------------
+
+Gradle Build Phases
+ 
+ - Initialization Phase
+    commonly Used in multi projecr build
+ - Configuration Phase
+     Execute code in the task which is not part of action 
+     (ex: description) 
+- Execution Phase
+     Execute task actions
+      (doFirst, doLast)
+-------------------------------------------------------------------------------------------
+Task Dependency
+   -> task6.dependsOn Task3
+
+* In this case if we execute task 6 then first gradle execute  Task3 and then Task6
+-------------------------------------------------------------------------------------------
