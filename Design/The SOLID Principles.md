@@ -25,6 +25,9 @@ S.O.L.I.D is an acronym for the first five object-oriented design(OOD) principle
   This simply means that a class should be easily extendable without modifying the class itself.
   This helps you create well-encapsulated, highly cohesive systems.
   You should make all member variables private by default. Write getters and setters only when you need them.
+  You should design modules that never change. 
+  When requirements change, you extend the behavior of such modules by adding new code, 
+  not by changing old code that already  works.
 
   The Liskov Substitution Principle also helps with encapsulation and cohesion. 
   This principle says that you should not violate the intent or semantics of the abstraction that you are inheriting from 
