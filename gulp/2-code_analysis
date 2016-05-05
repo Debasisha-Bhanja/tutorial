@@ -1,6 +1,7 @@
 /** 
   install jshint and jscs before running this task
   npm install gulp-jshint gulp-jscs --save-dev
+  npm install jshint-stylish --save-dev 
 **/
 
 var gulp = require('gulp');
