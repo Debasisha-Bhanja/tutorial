@@ -28,3 +28,8 @@ Here’s what a real task may look like:
   })
   
 ## To run -> gulp task-name
+
+# Java Script Code Analysis
+ - JS Hint -> Java Script code analysis tool used to detect errors and problems exist inside the code
+ - JS CS -> Java Script Code Style checking
+ 
