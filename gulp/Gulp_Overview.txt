@@ -27,3 +27,4 @@ Here’s what a real task may look like:
       .pipe(gulp.dest('dest')) // Outputs the file in the destination folder
   })
   
+## To run -> gulp task-name
