@@ -1,0 +1,23 @@
+/*
+* install gulp-util package which we are using in this sample 
+*  -  npm --save-dev gulp-util
+*/
+var gulp = require('gulp');
+var util = require('gulp-util');
+
+gulp.task('task1',function(){
+ log('Task 1 Started...')
+
+ log('Task 1 Completed...') 
+});
+
+function log(msg)
+{
+ if(typeof(msg) === 'object')
+  {
+    for(var item in msg){
+      if(msg.hasOwnProperty(item))
+       {
+        util.log(util.colors.green(msg[item]));
+       }
+    }
