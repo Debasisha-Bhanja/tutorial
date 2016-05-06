@@ -1,0 +1,8 @@
+apply plugin:'war'
+version = 0.1
+repositories {
+ mavenCentral()
+}
+dependencies {
+ compile "commons-lang:commons-lang:2.4"
+}
