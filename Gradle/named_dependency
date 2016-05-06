@@ -1,0 +1,5 @@
+List log4j = ["org.apache.logging.log4j:log4j-api:2.5@jar","org.apache.logging.log4j:log4j-core:2.5@jar"]
+List hibernate = ['org.hibernate:hibernate:3.0.5@jar','somegroup:someorg:1.0@jar']
+dependencies {
+  runtime log4j, hibernate
+}
