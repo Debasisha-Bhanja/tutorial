@@ -1,5 +1,6 @@
 apply plugin:'war'
 version = 0.1
+defaultTasks 'clean','build'
 repositories {
  mavenCentral()
 }
