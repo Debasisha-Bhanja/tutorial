@@ -1,0 +1,4 @@
+runtime('org.hibernate:hibernate:3.0.5') {
+  transitive = true
+}
+runtime 'org.hibernate:hibernate:3.0.5', transitive: true
