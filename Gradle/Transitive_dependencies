@@ -1,0 +1,6 @@
+configurations.compile.transitive = true
+dependencies {
+ compile 'org.springframework:spring-webmvc:3.0.0.RC2'
+ testCompile 'org.springframework:spring-test:3.0.0.RC2'
+ testCompile 'junit:junit:4.7'
+}
