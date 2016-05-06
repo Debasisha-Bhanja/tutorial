@@ -1,0 +1,12 @@
+dependencies {
+
+  compile 'org.springframework:spring-webmvc:3.0.0.RELEASE'
+  testCompile 'org.springframework:spring-test:3.0.0.RELEASE'
+  testCompile 'junit:junit:4.7'
+
+  runtime group: 'org.springframework', name: 'spring-core', version: '2.5'
+  runtime 'org.springframework:spring-core:2.5', 'org.springframework:spring-aop:2.5
+}
+
+
+ 
