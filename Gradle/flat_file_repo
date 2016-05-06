@@ -1,0 +1,4 @@
+repositories {
+  flatDir name: 'localRepository',
+  dirs: 'lib' flatDir dirs: ['lib1', 'lib2']
+}
