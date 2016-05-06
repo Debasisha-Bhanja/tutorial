@@ -1,0 +1,6 @@
+repositories {
+    mavenCentral()
+}
+repositories {
+    mavenRepo urls: "http://repo.mycompany.com/maven2"
+}
