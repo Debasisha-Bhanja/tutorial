@@ -1,4 +1,4 @@
-#Git Common Commands.
+# [1] Git Common Commands.
 - git init: Initializes a new Git repository. Until you run this command inside a repository or directory, 
   it’s just a regular folder. Only after you input this does it accept further Git commands.
   
@@ -32,3 +32,20 @@
 - git pull: If you’re working on your local computer and want the most up-to-date version of your repository to work with, 
   you “pull” the changes down from GitHub with this command.
   
+# [2] Steps to Connect Your Local Repository To Your GitHub Repository
+  - First, we need to tell Git that a remote repository actually exists somewhere online.
+  
+     Command to add remote repository
+
+       git remote add origin [Remote Repository Path]
+       
+      Ex: git remote add origin https://github.com/Debasisha-Bhanja/Test-Project.git
+  - To  list of all the remote origins your local repository knows about use following command.
+    git remote -v
+  
+  - After adding Remote repository Git knows there’s a remote repository and it’s where you want your local repository changes    to go.
+  
+  - Now we want to upload, or “push,” our changes up to the GitHub remote repo.
+    Use following command to push your changes to remote repository.
+    
+    git push
