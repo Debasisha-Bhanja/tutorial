@@ -1,0 +1,112 @@
+db.Restaurants.insert({
+  "address": {
+     "building": "1007",
+     "coord": [ -70.856077, 20.848447 ],
+     "street": "T Park Ave",
+     "zipcode": "10450"
+  },
+  "borough": "Bronx3",
+  "cuisine": "Italian",
+  "grades": [{ "date": { "date": 1393804800000 }, "grade": "A", "score": 8 },
+  { "date": { "date": 1378857600000 }, "grade": "A", "score": 95 },
+  { "date": { "date": 1358985600000 }, "grade": "A", "score": 7 },
+  { "date": { "date": 1322006400000 }, "grade": "A", "score": 19 },
+  { "date": { "date": 1299715200000 }, "grade": "B", "score": 13 }
+  ],
+  "name": "Ita Restaurants",
+  "restaurant_id": "30075487"
+})
+
+db.Restaurants.find()
+
+db.Restaurants.find({},{_id:false,restaurant_id:true,name:true,borough:true,cuisine:true})
+
+db.Restaurants.find({},{_id:false,restaurant_id:true,name:true,borough:true,"address.zipcode":true})
+
+db.Restaurants.find({borough:"Bronx"}).limit(5)
+
+db.Restaurants.find({borough:"Bronx"}).skip(5).limit(5)
+
+db.Restaurants.find({["grades.score":{$gt:0}},{"grades.score":{$lt:20}]})
+
+db.Restaurants.find({"grades.score":{$gt:0}},{"grades.score":{$lt:20}})
+
+db.Student.insert ({Student_Name:"Kalki",  Class: "2", Mark_Scored:100, Subject: ["Tamil", "English", "Maths"]})
+db.Student.insert ({Student_Name:"Matsya", Class: "1", Mark_Scored:10,  Subject: ["Tamil", "English"]})
+db.Student.insert ({Student_Name:"Krishna",Class: "1", Mark_Scored:50,  Subject: ["Tamil"]})
+db.Student.insert ({Student_Name:"Buddha", Class: "2", Mark_Scored:60,  Subject: ["Tamil"]})
+db.Student.insert ({Student_Name:"Rama",   Class: "2", Mark_Scored:80,  Subject: ["Tamil"]})
+db.Student.insert ({Student_Name:"Krishna",Class: "1", Mark_Scored:50,  Subject: ["English"]})
+db.Student.insert ({Student_Name:"Buddha", Class: "2", Mark_Scored:60,  Subject: ["English"]})
+db.Student.insert ({Student_Name:"Rama",   Class: "2", Mark_Scored:80,  Subject: ["English"]})
+db.Student.insert ({Student_Name:"Matsya", Class: "1", Mark_Scored:67,  Subject: ["Maths"]})
+db.Student.insert ({Student_Name:"Krishna",Class: "1", Mark_Scored:95,  Subject: ["Maths"]})
+db.Student.insert ({Student_Name:"Buddha", Class: "2", Mark_Scored:88,  Subject: ["Maths"]})
+db.Student.insert ({Student_Name:"Rama",   Class: "2", Mark_Scored:40,  Subject: ["Maths"]})
+
+db.Student.aggregate([{$match:{Class:"2"}}])
+db.Student.aggregate([{$match:{Class:"2",Mark_Scored:{$gte:20}}}])
+
+db.Student.aggregate({$match:{Student_Name:"Kalki"}})
+db.Student.aggregate({$match:{Student_Name:"Kalki"}},{$unwind:"$Subject"})
+
+db.Student.aggregate(
+ {$match:{Class:"2"},
+ {$unwind:"$Subject"}
+})
+
+db.Student.aggregate({$match:{Class:"2"}},
+                     {$unwind:"$Subject"},
+                     {$group:{"_id":{"Student_Name" : "$Student_Name"},
+                        "total":{$sum:"$Mark_Scored"}
+  }})
+
+ db.Student.aggregate({$match:{Class:"2"}},
+                     {$unwind:"$Subject"},
+                     {$group:{"_id":{"Student_Name" : "$Student_Name"},
+                     "total":{$sum:"$Mark_Scored"}}},
+                     {$project:{_id:0,"Name":"$_id.Student_Name","TotalMark": "$total"}},
+                     {$sort:{total:-1, Name:1}}
+                     )
+ db.Student.aggregate({$match:{Class:"2"}},
+                     {$unwind:"$Subject"},
+                     {$group:{"_id":{"Student_Name" : "$Student_Name"},
+                     "total":{$sum:"$Mark_Scored"}}},
+                     {$project:{_id:0,"Name":"$_id.Student_Name","TotalMark": "$total"}},
+                     {$sort:{TotalMark:1}}
+                     )
+                     
+db.Student.aggregate({$match:{Class:"2"}},
+                     {$unwind:"$Subject"},
+                     {$group:{"_id":{"Student_Name" : "$Student_Name"},
+                     "total":{$sum:"$Mark_Scored"}}},
+                     {$project:{_id:0,"Name":"$_id.Student_Name","TotalMark": "$total"}},
+                     {$sort:{TotalMark:1,Name:-1}},
+                     {$skip:1},
+                     {$limit:5}
+                     )
+                     
+db.products.drop()                     
+db.products.insert({'name':'iPad 16GB Wifi', 'manufacturer':"Apple", 'category':'Tablets','price':499.00})
+db.products.insert({'name':'iPad 32GB Wifi', 'category':'Tablets', 'manufacturer':"Apple",'price':599.00})
+db.products.insert({'name':'iPad 64GB Wifi', 'category':'Tablets',  'manufacturer':"Apple", 'price':699.00})
+db.products.insert({'name':'Galaxy S3', 'category':'Cell Phones', 'manufacturer':'Samsung', 'price':563.99})
+db.products.insert({'name':'Galaxy Tab 10', 'category':'Tablets', 'manufacturer':'Samsung', 'price':450.99})
+db.products.insert({'name':'Vaio', 'category':'Laptops',  'manufacturer':"Sony", 'price':499.00})
+db.products.insert({'name':'Macbook Air 13inch', 'category':'Laptops', 'manufacturer':"Apple", 'price':499.00})
+db.products.insert({'name':'Nexus 7', 'category':'Tablets',  'manufacturer':"Google", 'price':199.00})
+db.products.insert({'name':'Kindle Paper White', 'category':'Tablets', 'manufacturer':"Amazon", 'price':129.00})
+db.products.insert({'name':'Kindle Fire', 'category':'Tablets',  'manufacturer':"Amazon", 'price':199.00})
+
+
+db.products.aggregate({$group:{"_id":{"Manufacturer Name" : "$manufacturer","Product Category":"$category"},
+                     "Total Products Count":{$sum:1}}})
+                     
+db.products.aggregate({$group:{"_id":{"Product Category":"$category"},
+                     "Average Price":{$avg:"$price"}}})    
+      
+
+db.products.explain().find()                     
+               
+
+
