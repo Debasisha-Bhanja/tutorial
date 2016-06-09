@@ -24,7 +24,17 @@
  
     ``` npm list -g --depth=0 ```
     
-* Step 7: 
+* Step 7: Install other gulp plugins which we will be using while performing Angular Build.
+
+   ``` npm install gulp-clean gulp-jshint gulp-uglify gulp-minify-css gulp-connect --save ``` 
+   
+* Step 8: Craete Angular Project structure and place correponding files in respective folders.
+
+* Step 9: Create a empty gulpfile.js file and place in Project Base folder.
+
+* Step 10: Edit gulpfile.js file and define tasks for Angular Project build.
+  
+
   
 
 
