@@ -106,6 +106,7 @@ db.products.aggregate({$group:{"_id":{"Product Category":"$category"},
                      "Average Price":{$avg:"$price"}}})    
       
 
+mongoimport --db Excercise1 --collection zips --file zips.json (command prompt)
 db.products.explain().find()                     
                
 
