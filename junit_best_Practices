@@ -1,0 +1,138 @@
+TDD approach. Create your test case before anything else.	
+Avoid writing test cases that can cause impact	"Test cases that can cause impact exhibit the following problems:
+      Test cases that manipulates data
+      Test cases that require manual intervention
+
+Developers should avoid creating test cases that manipulate real data on any environment. This can cause inconsistencies of data in test environments or in the worst case scenario, manipulate real business case data into stale data. We should avoid this at all costs."
+Sensible Test Case names	
+Keep tests small and fast	Stress tests and load tests for single classes or small frameworks of classes shouldn’t be run as part of the unit test suite; they should be executed separately.
+Ensure that unit tests run completely in-memory	"Do not write unit tests that make HTTP requests, access a database, or read from the filesystem. These activities are too slow and too unreliable, so they are better left to other types of tests, such as functional tests.
+
+Tests that read from the filesystem are too complicated to be considered unit tests:
+
+They need to configure the location of the current working directory and that can be complicated to get right on developer machines and build machines.
+They often require storing the file to be read in source control and it can be complicated to keep the item in source control up-to-date."
+Do not skip unit tests	"There are a number of ways to skip unit tests, but you shouldn't use any of them:
+
+Do not use JUnit's @Ignore annotation.
+
+Unit tests that are skipped provide no benefit, but still have to be checked out of source control and compiled. Instead of skipping unit tests, remove them from source control."
+Aim for each unit test method to perform exactly one assertion	"There are two reasons to aim for each unit test to have exactly one assertion:
+
+When a unit test fails, it is much easier to determine what went wrong. If a failed unit test has three assertions, further effort is required to determine which one failed. If a failed unit test has only one assertion, no such effort is required.
+When a unit test performs more than one assertion, it is not guaranteed that all of the assertions occur. In particular, if an unchecked exception occurs, the assertions after the exception do not happen; instead, JUnit marks the unit test method as having an error and proceeds to the next test method.
+Therefore, strive for one assertion per test method."
+Use the strongest assertions possible	"Without strong assertions, unit tests provide nothing more than coverage. 
+Coverage is a worthy outcome of unit tests but we can do much better! In particular, we want our unit tests to ensure that our production code works correctly. 
+Without strong assertions, our unit tests only ensure that our production code doesn't blow up in our face.
+
+strongest assertions - asserting on the return value of a method
+strong assertions - verifying that vital dependent mock objects were interacted with correctly
+weak assertions - verifying that non-vital dependent mock objects (such as a logger) were interacted with correctly"
+Use the most appropriate assertion methods	JUnit has many assertion methods - assertEquals, assertTrue, assertFalse, assertNull, assertNotNull, assertArrayEquals, assertSame. Know the assertions in the latest version of JUnit and use the most appropriate one to have the most readable test code.
+The package naming convention should always be directly the same to the one of the package of your implementation.	This will make it more maintainable as it generally forms a pattern for developers once they need to update an existing test case.
+"Put assertion parameters in the proper order
+
+"	"The parameters to JUnit's assertions are:
+expected
+actual
+Ordering the parameters correctly ensures that JUnit's messages are accurate."
+Use exact matching when using a mocking framework	For example, avoid using Mockito's methods that start with any; prefer configuring and verifying exact parameter values.
+Name unit tests using a convention that includes the method and condition being tested	
+Do not print anything out in unit tests	Unit tests are intended for consumption by the computer. 
+Do not initialize in a unit test class constructor; use an @Before method instead	If a failure occurs during a test class constructor, an AssertionFailedError occurs and the stack trace is not very informative; in particular, the stack trace does not include the original error's location. On the other hand, if a failure occurs during an @Before method, all details about the failure's location are available. See this article for details.
+Do not use static members in a test class	Static members make unit test methods dependent. Don't use them! Instead, strive to write test methods that are completely independent.
+Do not write your own catch blocks that exist only to fail a test	"// Don't do this - it's not necessary to write the try/catch!
+@Test
+public void foo_seven()
+{
+  try
+  {
+    assertEquals(3, new Foo().foo(7));
+  }
+  catch (final IOException e)
+  {
+    fail();
+  }
+}
+// Do this instead
+@Test
+public void foo_seven() throws Exception
+{
+  assertEquals(3, new Foo().foo(7));
+}"
+Do not write your own catch blocks that exist only to pass a tes	"// Don't do this - it's not necessary to write the try/catch!
+@Test
+public void foo_nine()
+{
+  boolean wasExceptionThrown = false;
+  try
+  {
+    new Foo().foo(9);
+  }
+  catch (final IOException e)
+  {
+    wasExceptionThrown = true;
+  }
+  assertTrue(wasExceptionThrown);
+}
+// Do this instead
+@Test(expected = IOException.class)
+public void foo_nine() throws Exception
+{
+  new Foo().foo(9);
+}"
+Do not write your own catch blocks that exist only to print a stack trace	"// Don't do this - it's not necessary to write the try/catch!
+@Test
+public void foo_seven()
+{
+  try
+  {
+    assertEquals(3, new Foo().foo(7));
+  }
+  catch (final IOException e)
+  {
+    e.printStackTrace();
+  }
+}
+// Do this instead
+@Test
+public void foo_seven() throws Exception
+{
+  assertEquals(3, new Foo().foo(7));
+}"
+In test classes, do not declare that methods throw any particular type of exception	"// Don't do this - the throws clause is too specific!
+@Test
+public void foo_seven() throws IOException, GeneralSecurityException
+{
+  assertEquals(3, new Foo().foo(7));
+}
+// Do this instead
+@Test
+public void foo_seven() throws Exception
+{
+  assertEquals(3, new Foo().foo(7));
+}"
+Don’t just pass the test just for the sake of passing it!	The whole strategy of doing Junit test case is the fact that we want to ensure that the system is stable and scalable against any new extensions and requirements. It doesn’t make sense to just treat it as a way to manipulate SQM results.
+Test classes directly; do not rely on indirect testing	"Indirect testing occurs when a class is tested only because it is a dependency of another class. 
+For example, suppose you have the following:
+// In A.java
+public final class A
+{
+  private final B b;
+  // rest of class removed for brevity
+}
+
+// In B.java
+final class B
+{
+  // class removed for brevity
+}
+Here, class B is a dependency of class A.
+
+We should test class B directly even though its methods are also invoked by the tests of class A. That means that if we name our test classes using a suffix of Test, we should have two test classes - ATest and BTest.
+
+It's a bad idea to rely on indirect testing because we lose coverage of the dependent class if we change the implementation of the main class. In the example above, suppose we changed the implementation of class A so that it no longer depended on class B. The tests in ATest no longer invoke the methods of class B so we lose code coverage."
+Don’t mix Mokito with Spring Integration Test	"Mixing spring integration test and mockito can produce strange border effects like : singleton replaced by mock,...
+and will also lose the main benefit of mockito tests"
+Don’t mock servlet api	The org.springframework.mock.web package contains a comprehensive set of Servlet API mock objects, targeted at usage with Spring’s Web MVC framework, which are useful for testing web contexts and controllers. These mock objects are generally more convenient to use than dynamic mock objects such as mockito.
