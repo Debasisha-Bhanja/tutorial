@@ -1,0 +1,16 @@
+# Continuous Delivery
+-------------------------------------------------------------
+  
+-> Every change should trigger the feedback process.
+-> The feedback must be recived ASAP
+
+Benefits
+ - Empowering Teams
+ - Reducing errors
+ - Lowering Stress
+ - Deployment Flexibility
+ - Practice makes perfect
+ 
+---------------------------------------------------------------
+ 
+ 
