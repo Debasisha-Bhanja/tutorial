@@ -1,0 +1,121 @@
+DevOps Tool Name			Software Type			Tool Category
+-----------------------------------------------------------------------------------------
+Kibana					      Open Source			  BI/Monitoring
+New Relic				      Freemium			    BI/Monitoring
+Nagios					      Open Source			  BI/Monitoring
+Datalog					      Enterprise			  BI/Monitoring
+Elasticsearch				  Open Source			  BI/Monitoring
+StackState				    Open Source			  BI/Monitoring
+Maven					        Open Source			  Build
+Gradle					      Open Source			  Build
+Ant					          Open Source			  Build
+Grunt					        Open Source			  Build
+Gulp					        Open Source			  Build
+Broccoli				      Open Source			  Build
+Sbt					          Free				      Build
+Make					        Open Source			  Build
+Cmake					        Open Source			  Build
+MSBuild					      Open Source			  Build
+Rake					        Open Source			  Build
+Packer					      Free				      Build
+Jenkins					      Open Source			  CI
+Bamboo					      Paid				      CI
+Travis CI				      Open Source			  CI
+Codeship				      Feemium				    CI
+Visual Studio				  Paid				      CI
+CircleCI				      Feemium				    CI
+TeamCity				      Freemium			    CI
+Shippable				      Freemium			    CI
+CruiseControl				  Open Source			  CI
+Continuum				      Open Source			  CI
+Continua CI				    Open Source			  CI
+Solana CI				      Paid				      CI
+Amazon web Services		Feemium				    Cloud/lass/Pass
+Azure					        Paid				      Cloud/lass/Pass
+Google Cloud Platform	Enterprise			  Cloud/lass/Pass
+Rackspace				      Enterprise			  Cloud/lass/Pass
+OpenStack				      Open Source			  Cloud/lass/Pass
+Heroku					      Freemium			    Cloud/lass/Pass
+OpenShift				      Enterprise			  Cloud/lass/Pass
+Serena Release				Enterprise			  Collaboration
+Team Foundation				Paid				      Collaboration
+Trello					      Free				      Collaboration
+Jira					        Paid				      Collaboration
+HipChat					      Freemium			    Collaboration
+Slack					        Freemium			    Collaboration
+Flowdock				      Freemium			    Collaboration
+Pivotal Tracker				Paid				      Collaboration
+ServiceNow				    Enterprise			  Collaboration
+Chef					        Enterprise			  Configuration Management /Provisioning 
+Puppet					      Enterprise			  Configuration Management /Provisioning 
+Ansible					      Open Source			  Configuration Management /Provisioning 
+Salt					        Enterprise			  Configuration Management /Provisioning 
+BladeLogic				    Enterprise			  Configuration Management /Provisioning 
+Vagrant					      Open Source			  Configuration Management /Provisioning 
+Terraform				      Free				      Configuration Management /Provisioning 
+Consul					      Open Source			Configuration Management /Provisioning 
+Bcfg2					        Open Source			Configuration Management /Provisioning 
+CFEngine				      Open Source			Configuration Management /Provisioning 
+Docker					      Open Source			Containerization
+Rkt					          Open Source			Containerization
+Mesos					        Open Source			Containerization
+Npm					          Open Source			Containerization
+Swarm					        Free				Containerization
+Kubemetes				      Open Source			Containerization
+Nomad					        Open Source			Containerization
+Dbmaestro				      Paid				Database Management
+Liquibase				      Open Source			Database Management
+Redgate					      Enterprise			Database Management
+Datical					      Enterprise			Database Management
+Delphix					      Enterprise			Database Management
+Idera					        Enterprise			Database Management
+Otto					        Open Source			Deployment
+Deployment Manager			Paid				Deployment
+SmartFrog				Open Source			Deployment
+Capistrano				Free				Deployment
+JuJu					Free				Deployment
+Rundeck					Open Source			Deployment
+RapidDeploy				Enterprise			Deployment
+CodeDeploy				Freemium			Deployment
+Octopus Deploy				Enterprise			Deployment
+CA Nolio				Enterprise			Deployment
+XL Deploy				Enterprise			Deployment
+ElectricBox				Enterprise			Deployment
+Deploybot				Freemium			Deployment
+UrbanCodeDeploy				Enterprise			Deployment
+Splunk					Enterprise			Logging
+Logentries				Freemium			Logging
+Sumo Logic				Freemium			Logging
+Logstash				Open Source			Logging
+Graylog					Open Source			Logging
+XL Release				Enterprise			Release Management
+UrbanCode Release			Enterprise			Release Management
+BMC Release Process			Enterprise			Release Management
+HP Codar				Enterprise			Release Management
+Automic					Enterprise			Release Management
+Plutora Release				Enterprise			Release Management
+Docker Hub				Free				Repository Management
+Artifactory				Open Source			Repository Management
+Nexus					Open Source			Repository Management
+Github					Feemium				SCM
+Git					Open Source			SCM
+Bitbucket				Feemium				SCM
+GitLab					Open Source			SCM
+Subversion				Open Source			SCM
+Mercurial				Open Source			SCM
+ISPW					Enterprise			SCM
+Snort					Open Source			Security
+Tripwire				Open Source			Security
+Fortify					Enterprise			Security
+FitNesse				Open Source			Testing
+Selenium				Free				Testing
+Gatling					Open Source			Testing
+Cucumber				Free				Testing
+Cucumber.js				Open Source			Testing
+Qunit					Free				Testing
+Junit					Free				Testing
+Jmeter					Free				Testing
+TestING					Free				Testing
+Mocha					Open Source			Testing
+XL TestView				Enterprise			Testing
+Jasmine					Open Source			Testing
