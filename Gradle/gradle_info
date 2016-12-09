@@ -144,4 +144,141 @@ Ad-hoc tasks
       into  'css_dest'
      }
 ---------------------------------------------------------------------------------------
-     
+    Gradle Version
+ gradle -v	: Gradle version
+
+Executing multiple tasks
+ gradle <task1> <task2>
+
+Excluding tasks
+ To exclude a task from being executed use the -x command-line option and provide the name of
+ the task to exclude.
+
+ gradle <TaskToExecute> -x <DependentTaskToExclude>
+
+Continuing the build when a failure occurs
+ By default, Gradle will abort execution and fail the build as soon as any task fails.
+ In order to discover as many failures as possible in a single build execution, you can use the --continue option.
+ If a task fails, any subsequent tasks that were depending on it will not be executed
+
+Task name abbreviation
+ you don't have to provide the full name of the task. You only need to provide enough of the task
+ name to uniquely identify the task.
+ You can also abbreviate each word in a camel case task name.
+
+Forcing tasks to execute
+ Many tasks which are provided by Gradle support incremental builds.
+ You can easily identify tasks that take part in incremental build when Gradle displays the
+ text UP-TO-DATE next to their name during a build run.
+
+ To force Gradle to run all the tasks, ignoring any up-to-date checks.
+ use the --rerun-tasks option.
+
+ gradle --rerun-tasks <Taskname>
+
+ This will force all required tasks to execute, not just the ones you specify on the command line.
+
+Listing projects
+ Running gradle projects gives you a list of the sub-projects of the selected project, displayed in 
+ a hierarchy.
+
+ gradle -q projects
+
+Listing tasks
+ To list of the main tasks of the selected project, run following command.
+ 
+ gradle -q tasks
+
+Listing project dependencies
+ Running gradle dependencies gives you a list of the dependencies of the selected project.
+
+Listing project properties
+ Running gradle properties gives you a list of the properties of the selected project.
+
+Dry Run
+ Sometimes you are interested in which tasks are executed in which order for a given set of tasks specified on
+ the command line, but you don't want the tasks to be executed. You can use the -m option for this.
+
+ gradle -m clean compile
+
+----------------------------------------------------------------------------------------------------------------------
+Dependency configurations
+ In Gradle dependencies are grouped into configurations. A configuration is simply a named set of dependencies.
+
+ The Java plugin defines a number of standard configurations. These configurations represent the classpaths
+ that the Java plugin uses.
+
+ compile
+	The dependencies required to compile the production source of the project.
+ runtime
+	The dependencies required by the production classes at runtime. By default, also includes the compile
+	time dependencies.
+ testCompile
+	The dependencies required to compile the test source of the project. By default, also includes the
+	compiled production classes and the compile time dependencies.
+
+ testRuntime
+	The dependencies required to run the tests. By default, also includes the compile, runtime and test
+	compile dependencies.
+
+External dependencies
+ External dependency is a dependency on some files built outside the current build, and stored in a repository of some kind,
+ such as Maven central, or a corporate Maven or Ivy repository, or a directory in the local file system.
+ An external dependency is identified using group, name and version attributes. 
+ 
+ dependencies { compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.7.Final' }
+ dependencies { compile 'org.hibernate:hibernate-core:3.6.7.Final'}
+
+Repositories
+ A repository is really just a collection of files, organized by group, name and version. Gradle understands
+ several different repository formats, such as Maven and Ivy, and several different ways of accessing the
+ repository, such as using the local file system or HTTP.
+
+ repositories { mavenCentral() }
+ repositories { jcenter() }
+ repositories { maven { url "http://repo.mycompany.com/maven2"} }
+ repositories { ivy {url "http://repo.mycompany.com/repo" } }
+ repositories { maven { // URL can refer to a local directory
+			url "../local-repo"
+		      }
+	      }
+
+Publishing artifacts
+ To publishing artifacts to an maven repository we have to attach repositories to the uploadArchives task.
+
+ ------------------------------------------------------------------------------------------------------
+ apply plugin: 'maven'
+ 
+ uploadArchives { repositories { mavenDeployer { repository(url: "file://localhost/tmp/myRepo/") } } }
+ ------------------------------------------------------------------------------------------------------
+
+
+**********************************************************************************************************
+multi-project build
+ Some common characteristics of multi-project build.
+
+  -> A settings.gradle file in the root or master directory of the project.The settings.gradle file tells Gradle how the 
+     project and subprojects are structured. By default, Gradle uses the name of the directory it finds the settings.gradle 
+     as the name of the root project.
+
+  -> A build.gradle file in the root or master directory.The root build.gradle is often used to share common configuration 
+     between the child projects.
+
+  -> Child directories that have their own *.gradle build files (some multi-project builds may omit child
+     project build scripts)
+
+
+ To see a list of the tasks of a project, run gradle <project-path>:tasks
+                                              gradle :api:tasks
+Executing a multi-project build
+ multi-project builds are still collections of tasks you can run. The difference is that you may want to control 
+ which project's tasks get executed. 
+ 
+ You have two options here:
+
+ -> Change to the directory corresponding to the subproject you’re interested in and just execute gradle <task>
+    as normal.
+ -> Use a qualified task name from any directory, although this is usually done from the root.
+ 
+
+ 
